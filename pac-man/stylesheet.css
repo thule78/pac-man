@@ -1,0 +1,151 @@
+.path {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #333;
+  padding:20px;
+}
+
+.path::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-top: 12px dotted white;
+  width: 98%;
+  top: 45%;
+  left: 1%;
+}
+
+.pac-man {
+  position: absolute;
+  top:45%;
+  z-index: 99;
+  animation: moveForward 8s linear infinite;
+  animation-delay: 0.5s;
+  left: -20%;
+}
+
+.pac-man::before, .pac-man::after {
+  content: "";
+  position:absolute;
+  display:block;
+  width: 0px;
+  height: 0px;
+  border: 30px solid yellow;
+  border-radius: 50%;
+  margin-top: -26px;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  animation: mouthTop 0.7s ease infinite;
+}
+
+.pac-man::before {
+  border-color: yellow;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  animation: mouthBottom 0.7s ease infinite;
+}
+
+.ghosh {
+  position: absolute;
+  z-index: 99;
+  width: 60px;
+  height: 70px;
+  left: 8%;
+  top:13%;
+  background: red;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  animation: moveForward 8s linear infinite, blinky 1s linear infinite;
+}
+
+.ghosh::before, .ghosh::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: white;
+  top: 15px;
+  left: 4px;
+}
+
+.ghosh::after {
+  left: 30px;
+}
+
+.eyes::before, .eyes::after {
+  content: "";
+  position:absolute;
+  background: blue;
+  width: 10px;
+  height: 10px;
+  top: 25px;
+  left: 5px;
+  border-radius: 100%;
+  z-index: 99;
+  animation: eyes 1s linear infinite;
+}
+
+.eyes::after {
+  left: 32px;
+}
+
+.skirt, .skirt::before, .skirt::after  {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border:solid 10px #333;
+  border-top-color: transparent;
+  bottom:0px;
+}
+
+.skirt::before{
+  content: "";
+  left:10px;
+  bottom: -10px;
+}
+
+.skirt::after{
+  content: "";
+  left:30px;
+  bottom:-10px;
+}
+
+@keyframes moveForward {
+  0% {
+    left:-20%;
+  }
+  100%{
+    left: 100%;
+  }
+
+}
+
+@keyframes mouthTop {
+  50%{
+    transform: rotate(44deg);
+  }
+
+}
+
+@keyframes mouthBottom {
+  50% {
+    transform: rotate(-44deg);
+  }
+}
+@keyframes eyes {
+  50%{
+    width:10px;
+    height: 1px;
+  }
+
+}
+@keyframes blinky {
+  50%{
+    background:#333;
+  }
+
+}
